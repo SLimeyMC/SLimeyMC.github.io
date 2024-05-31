@@ -6,5 +6,6 @@ import expressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [alpinejs(), expressiveCode(), mdx()]
+  integrations: [alpinejs(), expressiveCode(), mdx()],
+  site: "https://slimeymc.github.com"
 });
