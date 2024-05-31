@@ -1,31 +1,38 @@
 ---
-import blogsMenu from "./blogsMenu.astro";
-
+import BlogsMenu from "./blogsMenu.astro";
 ---
-<script setup>
-    import Alpine from "alpinejs";
+<script>
+    import Alpine from 'alpinejs'
+    import collapse from '@alpinejs/collapse'
 
-    enum Navlist {
-        NONE,
-        BLOGS,
-        SHOWCASES,
-        WIKI,
-        ABOUT_ME
+    Alpine.plugin(collapse)
+
+    const Navlist = {
+        NONE: 0,
+        BLOGS: 1,
+        SHOWCASES: 2,
+        WIKI: 3,
+        ABOUT_ME: 4
     }
 </script>
 <nav>
-    <div class="circle raise">
+    <div class="circle raise raise-1" style="position: fixed;">
         <img src="favicon">
     </div>
-    <div class="navlist raise" x-data="{open: 0}" @click.outside="open = 0">
+    <!-- TODO detect if user scroling then close the dropdown -->
+    <div class="navlist raise"
+         x-data="{open: 0}"
+         @click.outside="open = 0" @mouseleave="setTimeout(() => {open = 0}, 500)"
+         style="position: fixed; right: 0;">
         <ul>
             <li><a @mouseenter="open = 1" href="./pages/blogs.astro">Blogs</a></li>
             <li><a @mouseenter="open = 2">Showcases</a></li>
             <li><a @mouseenter="open = 3">Wiki</a></li>
             <li><a @mouseenter="open = 4">About me</a></li>
         </ul>
-        <div x-cloak x-transition x-show="open === 1" client:visible class="cloak">
-            <blogsMenu />
+        <div x-cloak x-collapse x-show="open === 1" client:visible>
+            <hr>
+            <BlogsMenu />
         </div>
     </div>
 </nav>
@@ -42,8 +49,9 @@ import blogsMenu from "./blogsMenu.astro";
         padding: 1em;
     }
 
-    .navlist ul {
+    ul {
         display: flex;
+        justify-content: end;
         margin: 0 1.5em;
         padding-inline: 0;
         list-style: none;
