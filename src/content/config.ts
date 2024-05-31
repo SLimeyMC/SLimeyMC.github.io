@@ -6,7 +6,7 @@ const blogCollection = defineCollection({
         title: z.string(),
         description: z.string(),
         createdAt: z.date(),
-        publishedAt: z.date().optional(),
+        updatedAt: z.date().optional(),
         heroImage: z.string().optional(),
     }),
 });
@@ -16,7 +16,7 @@ const wikiCollection = defineCollection({
     schema: z.object({
         title: z.string(),
         description: z.string(),
-        createdDate: z.date(),
+        createdAt: z.date(),
         tag: z.array(z.string())
     }),
 });
