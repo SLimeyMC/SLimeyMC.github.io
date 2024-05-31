@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+
+const blogs = await getCollection('blog');
+blogs.length = 10;
+
+---
+<ul>
+    {blogs.map(blog => (
+            <li>
+                <h6><a href={`/blog/${blog.slug}`}>{blog.data.title}</a></h6>
+                <span class="description">
+                    {blog.data.description}
+                </span>
+                <time datetime={blog.data.updatedAt.toISOString()} class="text-info">
+                    {blog.data.updatedAt.toDateString()}
+                </time>
+            </li>
+        ))}
+</ul>

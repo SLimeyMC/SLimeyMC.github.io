@@ -1,0 +1,52 @@
+---
+import blogsMenu from "./blogsMenu.astro";
+
+---
+<script setup>
+    import Alpine from "alpinejs";
+
+    enum Navlist {
+        NONE,
+        BLOGS,
+        SHOWCASES,
+        WIKI,
+        ABOUT_ME
+    }
+</script>
+<nav>
+    <div class="circle raise">
+        <img src="favicon">
+    </div>
+    <div class="navlist raise" x-data="{open: 0}" @click.outside="open = 0">
+        <ul>
+            <li><a @mouseenter="open = 1" href="./pages/blogs.astro">Blogs</a></li>
+            <li><a @mouseenter="open = 2">Showcases</a></li>
+            <li><a @mouseenter="open = 3">Wiki</a></li>
+            <li><a @mouseenter="open = 4">About me</a></li>
+        </ul>
+        <div x-cloak x-transition x-show="open === 1" client:visible class="cloak">
+            <blogsMenu />
+        </div>
+    </div>
+</nav>
+
+<style>
+    nav {
+        display: flex;
+        justify-content: space-between;
+        position: sticky;
+    }
+
+    .navlist {
+        border-radius: 24px;
+        padding: 1em;
+    }
+
+    .navlist ul {
+        display: flex;
+        margin: 0 1.5em;
+        padding-inline: 0;
+        list-style: none;
+        gap: 2em;
+    }
+</style>
