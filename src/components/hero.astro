@@ -1,0 +1,118 @@
+---
+
+---
+<div class="slime-container raise">
+    <div class="press slimes">
+        <!-- Competitive and love computer and redstone -->
+        <div class="red slime"></div>
+        <!-- Generous and caring man the wise of the bunch -->
+        <div class="yellow slime"></div>
+        <!-- Cassanova wannabe man -->
+        <div class="green slime"></div>
+        <!-- Friendly guy the chew toy of the brothership -->
+        <div class="blue slime"></div>
+        <!-- Mysterious stoic person and quite done for -->
+        <div class="purple slime"></div>
+        <!-- Ultra competitive and can overfixate over one stuff -->
+        <div class="black slime"></div>
+        <!-- Sophisticated man, a magnificient bastard -->
+        <div class="silver slime"></div>
+    </div>
+</div>
+<script>
+    import Box2DFactory from 'box2d-wasm';
+
+    Box2DFactory().then((box2D: typeof Box2D & EmscriptenModule) => {
+        console.log(box2D);
+    });
+</script>
+<style lang="postcss">
+    .slime-container {
+        border-radius: 24px;
+        display: block;
+        height: 60vh;
+        width: 60vh;
+        margin: 120px auto;
+        padding: 1rem;
+        user-select: none;
+    }
+
+    .slimes {
+        mix-blend-mode: overlay
+    }
+
+    .slime {
+        position: absolute;
+        width: 15vh;
+        height: 15vh;
+        border-radius: 50%;
+        box-shadow: inset 20px 20px 60px #112a, inset -20px -20px 60px #fffa,
+        20px 20px 60px #112a, -20px -20px 60px #ffea;
+        transition: transform 2s;
+    }
+    .red {
+        background:
+                radial-gradient(75% 75% at 20% 30%, #8c072f 0%, #fa1515 100%),
+                radial-gradient(75% 75% at center, #0000 0%, #fa1515 100%);
+        animation: red-sway 5s ease-in-out infinite both alternate;
+        top: 7.5%;
+        left: 7.5%;
+    }
+    .yellow {
+        background:
+                radial-gradient(75% 75% at 20% 30%, #a24923 0%, #fada5b 100%),
+                radial-gradient(75% 75% at center, #0000 0%, #fada5b 100%);
+        top: 7.5%;
+        left: 37.5%;
+    }
+    .green {
+        background:
+                radial-gradient(75% 75% at 20% 30%, #239655 0%, #53e321 100%),
+                radial-gradient(75% 75% at center, #0000 0%, #53e321 100%);
+        top: 37.5%;
+        left: 37.5%;
+    }
+    .blue {
+        background:
+                radial-gradient(75% 75% at 20% 30%, #238bbe 0%, #17ffec 100%),
+                radial-gradient(75% 75% at center, #0000 0%, #17ffec 100%);
+        top: 67.5%;
+        left: 37.5%;
+    }
+    .purple {
+        background:
+                radial-gradient(75% 75% at 20% 30%, #591673 0%, #a2287f 100%),
+                radial-gradient(75% 75% at center, #0000 0%, #a2287f 100%);
+        top: 7.5%;
+        left: 67.5%;
+    }
+    .black {
+        background:
+                radial-gradient(75% 75% at 20% 30%, #272822 0%, #2a2d33 100%),
+                radial-gradient(75% 75% at center, #0000 0%, #001f1d 100%);
+        top: 37.5%;
+        left: 67.5%;
+    }
+    .silver {
+        background:
+                radial-gradient(75% 75% at 20% 30%, #c2cbdd 0%, #feffe5 100%),
+                radial-gradient(75% 75% at center, #0000 0%, #c7dedb 100%);
+        top: 67.5%;
+        left: 67.5%;
+    }
+    .slime:hover {
+        z-index: 99;
+        transition: transform 1s;
+        transform: scale(120%);
+    }
+    @keyframes hover {
+        to {
+            transform: scale(120%);
+        }
+    }
+
+    .press {
+        border-radius: calc(24px - 1rem);
+        height: 100%;
+    }
+</style>
