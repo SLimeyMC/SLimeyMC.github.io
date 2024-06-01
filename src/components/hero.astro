@@ -17,6 +17,11 @@
         <div class="black slime"></div>
         <!-- Sophisticated man, a magnificient bastard -->
         <div class="silver slime"></div>
+        <div class="text">
+            <h1>SlimeyAr</h1>
+            <h5>Peep who love game development, <br>
+                animation, data science and all</h5>
+        </div>
     </div>
 </div>
 <script>
@@ -49,6 +54,7 @@
         box-shadow: inset 20px 20px 60px #112a, inset -20px -20px 60px #fffa,
         20px 20px 60px #112a, -20px -20px 60px #ffea;
         transition: transform 2s;
+        z-index: 1;
     }
     .red {
         background:
@@ -101,14 +107,29 @@
         left: 67.5%;
     }
     .slime:hover {
-        z-index: 99;
         transition: transform 1s;
         transform: scale(120%);
     }
-    @keyframes hover {
-        to {
-            transform: scale(120%);
-        }
+
+    .text {
+        position: absolute;
+        left: -5%;
+        top: 50%;
+        transform: rotate(-90deg);
+    }
+
+    .text>h1 {
+        font-family: 'FancyHeavy';
+        font-size: var(--text-4xl);
+        padding: 0;
+        line-height: 0;
+        transform-origin: left;
+        transform: scaleX(1.2);
+    }
+
+    .text>h5 {
+        font-family: 'FancyLight';
+        font-size: var(--text-lg);
     }
 
     .press {
