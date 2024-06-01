@@ -20,6 +20,10 @@
     "alpinejs": "^3.14.0",
     "astro": "^4.9.2",
     "astro-expressive-code": "^0.35.3",
-    "typescript": "^5.4.5"
+    "box2d-wasm": "^7.0.0",
+    "lightningcss": "^1.25.1",
+    "typescript": "^5.4.5",
+    "vite-plugin-top-level-await": "^1.4.1",
+    "vite-plugin-wasm": "^3.3.0"
   }
 }
