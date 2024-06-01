@@ -15,15 +15,15 @@ import BlogsMenu from "./blogsMenu.astro";
         ABOUT_ME: 4
     }
 </script>
-<nav>
-    <div class="circle raise raise-1" style="position: fixed;">
+<nav class="raise-1">
+    <div class="circle raise" style="position: fixed; left: 8px;">
         <img src="favicon">
     </div>
     <!-- TODO detect if user scroling then close the dropdown -->
     <div class="navlist raise"
          x-data="{open: 0}"
          @click.outside="open = 0" @mouseleave="setTimeout(() => {open = 0}, 500)"
-         style="position: fixed; right: 0;">
+         style="position: fixed; right: 8px;">
         <ul>
             <li><a @mouseenter="open = 1" href="./blogs">Blogs</a></li>
             <li><a @mouseenter="open = 2">Showcases</a></li>
@@ -32,6 +32,7 @@ import BlogsMenu from "./blogsMenu.astro";
         </ul>
         <div x-cloak x-collapse x-show="open === 1" client:visible>
             <hr>
+            <p>RSS compatible!</p>
             <BlogsMenu />
         </div>
     </div>
@@ -47,6 +48,7 @@ import BlogsMenu from "./blogsMenu.astro";
     .navlist {
         border-radius: 24px;
         padding: 1em;
+        background: var(--dominant);
     }
 
     ul {
