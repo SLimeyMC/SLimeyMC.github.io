@@ -1,5 +1,5 @@
 ---
-import BlogsMenu from "./blogsMenu.astro";
+import BlogsDropdown from "./blogsDropdown.astro";
 ---
 <script>
     import Alpine from 'alpinejs'
@@ -33,7 +33,7 @@ import BlogsMenu from "./blogsMenu.astro";
         <div x-cloak x-collapse x-show="open === 1" client:visible>
             <hr>
             <p>RSS compatible!</p>
-            <BlogsMenu />
+            <BlogsDropdown />
         </div>
     </div>
 </nav>
@@ -46,7 +46,7 @@ import BlogsMenu from "./blogsMenu.astro";
     }
 
     .navlist {
-        border-radius: 24px;
+        border-radius: var(--radius-lg);
         padding: 1em;
         background: var(--dominant);
     }

@@ -6,8 +6,8 @@
     --opposite: #1a1b1e;
     --text: #231210;
 
-    --dominant-dark: #a29790;
-    --dominant-light: #e4d9d3;
+    --dominant-dark: #a9a596;
+    --dominant-light: #e4e0d3;
     --dominant-lighter: #fdf4f8;
 
     --accent-dark: #890630;
@@ -45,6 +45,11 @@
 
     /* Border radius */
     --radius-lg: 24px;
+
+    /* Blur */
+    --blur-md: 20px;
+    --blur-lg: 30px;
+    --blur-xl: 60px;
 }
 
 :root.theme-dark {
@@ -148,20 +153,20 @@ a {
 }
 
 .raise {
-    box-shadow: -20px -20px 30px var(--highlight),
-    20px 20px 30px  var(--shadow);
-    backdrop-filter: blur(24px);
+    box-shadow: -20px -20px var(--blur-lg) var(--highlight),
+    20px 20px var(--blur-lg)  var(--shadow);
+    backdrop-filter: blur(var(--blur-md));
 }
 
 .raise-gentle {
-    box-shadow: -20px -20px 60px var(--highlight),
-    20px 20px 60px  var(--shadow);
-    backdrop-filter: blur(24px);
+    box-shadow: -20px -20px var(--blur-xl) var(--highlight),
+    20px 20px var(--blur-xl)  var(--shadow);
+    backdrop-filter: blur(var(--blur-md));
 }
 
 .press {
-    box-shadow: inset 10px 10px 30px var(--shadow),
-    inset -15px -15px 30px var(--highlight);
+    box-shadow: inset 10px 10px var(--blur-lg) var(--shadow),
+    inset -15px -15px var(--blur-lg) var(--highlight);
 }
 
 .concave {
