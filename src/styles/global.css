@@ -6,8 +6,8 @@
     --opposite: #1a1b1e;
     --text: #231210;
 
-    --dominant-dark: #b7b6a7;
-    --dominant-light: #f2ece8;
+    --dominant-dark: #a29790;
+    --dominant-light: #e4d9d3;
     --dominant-lighter: #fdf4f8;
 
     --accent-dark: #890630;
@@ -19,6 +19,9 @@
 
     --empty: #000;
     --full: #fff;
+
+    --shadow: #2119;
+    --highlight: #feeb;
 
     /* Text Sizes */
     --text-sm: 0.875rem;
@@ -145,14 +148,20 @@ a {
 }
 
 .raise {
-    box-shadow: -20px -20px 60px var(--dominant-light),
-    20px 20px 60px  var(--dominant-dark);
+    box-shadow: -20px -20px 30px var(--highlight),
+    20px 20px 30px  var(--shadow);
+    backdrop-filter: blur(24px);
+}
+
+.raise-gentle {
+    box-shadow: -20px -20px 60px var(--highlight),
+    20px 20px 60px  var(--shadow);
     backdrop-filter: blur(24px);
 }
 
 .press {
-    box-shadow: inset 20px 20px 60px #c9c6b4,
-    inset -20px -20px 60px #fffff4;
+    box-shadow: inset 10px 10px 30px var(--shadow),
+    inset -15px -15px 30px var(--highlight);
 }
 
 .concave {

@@ -4,19 +4,19 @@
 <div class="slime-container raise">
     <div class="press slimes">
         <!-- Competitive and love computer and redstone -->
-        <div class="red slime"></div>
+        <div class="red slime raise raise-1"></div>
         <!-- Generous and caring man the wise of the bunch -->
-        <div class="yellow slime"></div>
+        <div class="yellow slime raise raise-1"></div>
         <!-- Cassanova wannabe man -->
-        <div class="green slime"></div>
+        <div class="green slime raise raise-1"></div>
         <!-- Friendly guy the chew toy of the brothership -->
-        <div class="blue slime"></div>
+        <div class="blue slime raise raise-1"></div>
         <!-- Mysterious stoic person and quite done for -->
-        <div class="purple slime"></div>
+        <div class="purple slime raise raise-1"></div>
         <!-- Ultra competitive and can overfixate over one stuff -->
-        <div class="black slime"></div>
+        <div class="black slime raise raise-1"></div>
         <!-- Sophisticated man, a magnificient bastard -->
-        <div class="silver slime"></div>
+        <div class="silver slime raise raise-1"></div>
         <div class="text">
             <h1>SlimeyAr</h1>
             <h5>Peep who love game development, <br>
@@ -52,9 +52,9 @@
         height: 15vh;
         border-radius: 50%;
         box-shadow: inset 20px 20px 60px #112a, inset -20px -20px 60px #fffa,
-        20px 20px 60px #112a, -20px -20px 60px #ffea;
+        -20px -20px 60px var(--highlight), 20px 20px 60px  var(--shadow);
         transition: transform 2s;
-        z-index: 1;
+
     }
     .red {
         background:
@@ -113,8 +113,8 @@
 
     .text {
         position: absolute;
-        left: -5%;
-        top: 50%;
+        left: -10%;
+        top: 47%;
         transform: rotate(-90deg);
     }
 
@@ -129,7 +129,10 @@
 
     .text>h5 {
         font-family: 'FancyLight';
+        letter-spacing: 2px;
         font-size: var(--text-lg);
+        transform-origin: left;
+        transform: scaleX(0.9);
     }
 
     .press {
