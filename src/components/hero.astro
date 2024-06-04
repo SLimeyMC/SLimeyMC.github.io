@@ -25,11 +25,11 @@
     </div>
 </div>
 <script>
-    import Box2DFactory from 'box2d-wasm';
+    // import Box2DFactory from 'box2d-wasm';
 
-    Box2DFactory().then((box2D: typeof Box2D & EmscriptenModule) => {
-        // console.log(box2D);
-    });
+    // Box2DFactory().then((box2D: typeof Box2D & EmscriptenModule) => {
+    //     console.log(box2D);
+    // });
 </script>
 <style lang="postcss">
     .slime-container {
@@ -57,12 +57,19 @@
         -20px -20px 60px var(--highlight), 20px 20px 60px  var(--shadow);
         transition: transform 2s;
     }
+    .slime:hover {
+        transition: transform 1s;
+        transform: scale(120%);
+    }
     .slime::before {
         content: '';
         position: absolute;
         border-radius: 100%;
         width: 100%;
         height: 100%;
+    }
+    .slime::before:hover {
+        z-index: 99;
     }
     .red {
         background:
@@ -71,7 +78,6 @@
         animation: red-sway 5s ease-in-out infinite both alternate;
         top: 7.5%;
         left: 7.5%;
-
     }
     .red::before {
         box-shadow: 0 0 60px #fa1515;
@@ -135,10 +141,6 @@
     }
     .silver::before {
         box-shadow: 0 0 60px #feffe5;
-    }
-    .slime:hover {
-        transition: transform 1s;
-        transform: scale(120%);
     }
 
     .text {
