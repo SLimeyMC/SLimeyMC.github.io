@@ -163,6 +163,11 @@ a {
     20px 20px var(--blur-xl)  var(--shadow);
     backdrop-filter: blur(var(--blur-md));
 }
+.raise-steep {
+    box-shadow: -15px -15px var(--blur-md) var(--highlight),
+    15px 15px var(--blur-md)  var(--shadow);
+    backdrop-filter: blur(var(--blur-md));
+}
 
 .press {
     box-shadow: inset 10px 10px var(--blur-lg) var(--shadow),

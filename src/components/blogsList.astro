@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+const blogs = await getCollection('blog');
+---
+<h1>My Blogs!</h1>
+<div class="blogs">
+    <div>
+        {blogs.map(blog => (
+                <div class="blog raise-steep">
+                    {
+                        blog.data.heroImage ? (
+                                <Image src={blog.data.heroImage.src} alt={blog.data.heroImage.alt}/>
+                        ) : (
+                                <img src="/placeholder.svg" alt="placeholder; no image"/>
+                        )
+                    }
+                    <h4><a href={`/blog/${blog.slug}`}>{blog.data.title}</a></h4>
+                    <span class="description">{blog.data.description}</span>
+                    <div class="date-descriptor">
+                        {
+                            blog.data.updatedAt && (
+                                        <time datetime={blog.data.updatedAt?.toISOString()} class="text-info">
+                                            {blog.data.updatedAt?.toLocaleDateString('en-GB',)}
+                                        </time>
+                            )
+                        }
+                        <time datetime={blog.data.createdAt?.toISOString()}>
+                            {blog.data.createdAt?.toLocaleDateString('en-GB',)}
+                        </time>
+                    </div>
+                </div>
+    ))}
+    </div>
+</div>
+
+<style>
+    .blogs {
+        display: flex;
+        flex-flow: column wrap;
+        gap: 1em; /* it doesnt work? */
+    }
+
+    .blog {
+        overflow: hidden;
+        border-radius: var(--radius-lg);
+        padding: 1em;
+        width: 20em;
+        height: 16em;
+        margin: 2em;
+        user-select: none;
+    }
+    .blog>img {
+        margin: -1em;
+    }
+    .blog>h4 {
+        line-height: 0;
+    }
+
+    .description {
+        overflow: hidden;
+    }
+
+    .date-descriptor {
+        position: absolute;
+        right: 1em;
+        bottom: 1em;
+    }
+</style>
