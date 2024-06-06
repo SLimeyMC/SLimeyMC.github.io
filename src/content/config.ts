@@ -8,8 +8,10 @@ const blogCollection = defineCollection({
         createdAt: z.date(),
         language: z.enum(['en-US', 'en-GB', 'id-ID']).optional().default('en-GB'),
         updatedAt: z.date().optional(),
-        heroSrc: image().optional(),
-        heroAlt: z.string().optional().default("placeholder; no image"),
+        heroImage: z.object({
+            src: image(),
+            alt: z.string()
+        }).optional(),
         tags: z.array(z.string()),
         relatedBlogs: z.array(reference('blog')).optional(),
         footnote: z.string().optional(),
