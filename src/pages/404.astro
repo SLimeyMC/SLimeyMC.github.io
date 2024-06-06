@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/baseLayout.astro'
+---
+<BaseLayout >
+    <div style="padding: 2em;">
+        <p class="p404">404..</p>
+        <p>Look like the page you visited is spoiled or never there to begin with.. <br>
+        But dont be sad, keep looking for it!<br>
+        Or just click that circle on the top left to go to homepage, you do you</p>
+
+    </div>
+</BaseLayout>
+<style>
+    .p404 {
+        color: var(--dominant);
+        text-shadow: 2px 2px var(--blur-md) var(--shadow),
+        -2px -2px var(--blur-md) var(--highlight);
+        background-clip: text;
+        font-family: 'Mono';
+        font-size: 12em;
+        margin: .5em 0;
+        line-height: 0;
+    }
+</style>
