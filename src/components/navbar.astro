@@ -4,8 +4,9 @@ import BlogsDropdown from "./blogsDropdown.astro";
 <script>
     import Alpine from 'alpinejs'
     import collapse from '@alpinejs/collapse'
+    import reveal from "./reveal";
 
-    Alpine.plugin(collapse)
+    Alpine.plugin(reveal)
 
     const Navlist = {
         NONE: 0,
@@ -30,7 +31,7 @@ import BlogsDropdown from "./blogsDropdown.astro";
             <li><a @mouseenter="open = 3">Wiki</a></li>
             <li><a @mouseenter="open = 4">About me</a></li>
         </ul>
-        <div x-cloak x-collapse x-show="open === 1" client:visible>
+        <div x-cloak x-reveal x-show="open === 1" client:visible>
             <hr>
             <p>RSS compatible!</p>
             <BlogsDropdown />
