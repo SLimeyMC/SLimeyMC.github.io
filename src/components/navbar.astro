@@ -3,8 +3,8 @@ import BlogsDropdown from "./blogsDropdown.astro";
 ---
 <script>
     import Alpine from 'alpinejs'
-    import persist from '@alpinejs/persist'
-    import reveal from "./reveal";
+    import persist from '@alpinejs/Persist'
+    import reveal from "./reveal.js";
 
     Alpine.plugin(reveal)
     Alpine.plugin(persist)
@@ -27,7 +27,7 @@ import BlogsDropdown from "./blogsDropdown.astro";
          @click.outside="open = 0" @mouseleave="setTimeout(() => {open = 0}, 500)"
          style="position: fixed; right: 8px;">
         <ul>
-            <li><a @mouseenter="open = 1" href="./blogs">Blogs</a></li>
+            <li><a @mouseenter="open = 1" href="/blogs">Blogs</a></li>
             <li><a @mouseenter="open = 2">Showcases</a></li>
             <li><a @mouseenter="open = 3">Wiki</a></li>
             <li><a @mouseenter="open = 4">About me</a></li>
@@ -45,8 +45,24 @@ import BlogsDropdown from "./blogsDropdown.astro";
         height: 3em;
     }
 
-    nav>div {
-        position: sticky;
+    nav>button {
+        background: linear-gradient(145deg, var(--dominant-light), var(--dominant-dark));
+        position: fixed;
+        left: 8px;
+        font-size: 18px;
+        height: 3.2em;
+        width: 3.2em;
+        cursor: pointer;
+        border: 0;
+    }
+
+    nav>button:hover {
+        background: linear-gradient(145deg, var(--dominant-dark), var(--dominant-light))
+    }
+
+    nav>button:active {
+        box-shadow: inset 10px 10px var(--blur-lg) var(--shadow),
+        inset -15px -15px var(--blur-lg) var(--highlight);
     }
 
     .navlist {
