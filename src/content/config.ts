@@ -6,8 +6,8 @@ const blogCollection = defineCollection({
         title: z.string(),
         description: z.string(),
         createdAt: z.date(),
-        language: z.enum(['en-US', 'en-GB', 'id-ID']).optional().default('en-GB'),
         updatedAt: z.date().optional(),
+        language: z.enum(['en-US', 'en-GB', 'id-ID']).optional().default('en-GB'),
         heroImage: z.object({
             src: image(),
             alt: z.string()

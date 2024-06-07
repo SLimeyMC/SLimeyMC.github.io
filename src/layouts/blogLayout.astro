@@ -1,0 +1,29 @@
+---
+import {reference} from "astro:content";
+import BaseLayout from './baseLayout.astro';
+
+interface Props {
+    title: string;
+    description: string;
+    createdAt: date;
+    updatedAt?: date | undefined;
+    heroImage?: {
+        src: string,
+        alt: string
+    } | undefined ;
+    tags: string[];
+    footnote?: string | undefined;
+}
+
+const { title, description, createdAt, updatedAt, heroImage, tags, relatedBlogs, footnote } = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+    <div class="container">
+        <h1 style="line-height: 0;">{title}</h1>
+        <h5>{description}</h5>
+        <div class="container raise concave">
+            <slot/>
+
+        </div>
+    </div>
+</BaseLayout>

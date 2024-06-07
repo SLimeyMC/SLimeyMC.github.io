@@ -141,7 +141,7 @@ a {
 }
 
 .container {
-    margin: 20rem auto 0;
+    margin: auto;
     padding: 1rem 3rem 3rem;
     max-width: 1000px;
     line-height: var(--text-2xl);
