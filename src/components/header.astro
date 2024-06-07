@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-
+import { ViewTransitions } from 'astro:transitions';
 interface Props {
     title?: string | undefined;
     description?: string | undefined;
@@ -17,5 +17,5 @@ const {
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
-
+<ViewTransitions />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
