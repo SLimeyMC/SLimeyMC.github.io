@@ -3,10 +3,11 @@ import BlogsDropdown from "./blogsDropdown.astro";
 ---
 <script>
     import Alpine from 'alpinejs'
-    import collapse from '@alpinejs/collapse'
+    import persist from '@alpinejs/persist'
     import reveal from "./reveal";
 
     Alpine.plugin(reveal)
+    Alpine.plugin(persist)
 
     const Navlist = {
         NONE: 0,
@@ -22,7 +23,7 @@ import BlogsDropdown from "./blogsDropdown.astro";
     </div>
     <!-- TODO detect if user scroling then close the dropdown -->
     <div class="navlist raise"
-         x-data="{open: 0}"
+         x-data="{open: $persist(0)}"
          @click.outside="open = 0" @mouseleave="setTimeout(() => {open = 0}, 500)"
          style="position: fixed; right: 8px;">
         <ul>
