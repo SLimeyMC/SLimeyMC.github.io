@@ -30,7 +30,7 @@ import BlogsDropdown from "./blogsDropdown.astro";
             <li><a @mouseenter="open = 1" href="/blogs">Blogs</a></li>
             <li><a @mouseenter="open = 2">Showcases</a></li>
             <li><a @mouseenter="open = 3">Wiki</a></li>
-            <li><a @mouseenter="open = 4">About me</a></li>
+            <li><a @mouseenter="open = 4" href="/about">About me</a></li>
         </ul>
         <div x-cloak x-reveal x-show="open === 1" client:visible>
             <hr>
