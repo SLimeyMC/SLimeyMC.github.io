@@ -22,11 +22,11 @@ import BlogsDropdown from "./blogsDropdown.astro";
         <img src="/favicon.svg" >
     </button>
     <!-- TODO detect if user scroling then close the dropdown -->
-    <div class="navlist raise"
+    <div class="nav-list raise"
          x-data="{open: $persist(0)}"
          @click.outside="open = 0" @mouseleave="setTimeout(() => {open = 0}, 500)"
          style="position: fixed; right: 8px;">
-        <ul>
+        <ul class="inline-list">
             <li><a @mouseenter="open = 1" href="/blogs">Blogs</a></li>
             <li><a @mouseenter="open = 2">Showcases</a></li>
             <li><a @mouseenter="open = 3">Wiki</a></li>
@@ -56,30 +56,15 @@ import BlogsDropdown from "./blogsDropdown.astro";
         border: 0;
     }
 
-    nav>button:hover {
-        background: linear-gradient(145deg, var(--dominant-dark), var(--dominant-light))
-    }
-
-    nav>button:active {
-        box-shadow: inset 10px 10px var(--blur-lg) var(--shadow),
-        inset -15px -15px var(--blur-lg) var(--highlight);
-    }
-    nav>button:active>img {
-        transform: scale(0.8);
-    }
-
-    .navlist {
+    .nav-list {
         border-radius: var(--radius-lg);
         padding: 1em;
         background: var(--dominant);
     }
 
     ul {
-        display: flex;
         justify-content: end;
         margin: 0 1.5em;
-        padding-inline: 0;
-        list-style: none;
         gap: 2em;
     }
 </style>
