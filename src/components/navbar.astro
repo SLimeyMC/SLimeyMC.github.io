@@ -2,9 +2,9 @@
 import BlogsDropdown from "./blogsDropdown.astro";
 ---
 <script>
-    import Alpine from 'alpinejs'
-    import persist from '@alpinejs/Persist'
+    import Alpine from 'alpinejs';
     import reveal from "./reveal.js";
+    import persist from '@alpinejs/persist';
 
     Alpine.plugin(reveal)
     Alpine.plugin(persist)
@@ -18,7 +18,7 @@ import BlogsDropdown from "./blogsDropdown.astro";
     }
 </script>
 <nav class="raise-1">
-    <button class="circle raise-steep" onclick="location.replace('../') ">
+    <button class="circle raise-small" x-data @click="location.replace('../') ">
         <img src="/favicon.svg" >
     </button>
     <!-- TODO detect if user scroling then close the dropdown -->

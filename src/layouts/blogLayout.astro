@@ -1,6 +1,7 @@
 ---
 import {reference} from "astro:content";
 import BaseLayout from './baseLayout.astro';
+import BlogViewOption from '../components/blogViewOption.astro';
 
 interface Props {
     title: string;
@@ -21,6 +22,7 @@ const { title, description, createdAt, updatedAt, heroImage, tags, relatedBlogs,
     <div class="container">
         <h1 style="line-height: 0;">{title}</h1>
         <h5>{description}</h5>
+        <BlogViewOption />
         <div class="container raise concave">
             <slot/>
 

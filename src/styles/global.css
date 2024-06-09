@@ -47,6 +47,7 @@
     --radius-lg: 24px;
 
     /* Blur */
+    --blur-sm: 12px;
     --blur-md: 20px;
     --blur-lg: 30px;
     --blur-xl: 60px;
@@ -155,18 +156,18 @@ a {
 .raise {
     box-shadow: -20px -20px var(--blur-lg) var(--highlight),
     20px 20px var(--blur-lg)  var(--shadow);
-    backdrop-filter: blur(var(--blur-md));
 }
-
 .raise-gentle {
     box-shadow: -20px -20px var(--blur-xl) var(--highlight),
     20px 20px var(--blur-xl)  var(--shadow);
-    backdrop-filter: blur(var(--blur-md));
 }
 .raise-steep {
     box-shadow: -15px -15px var(--blur-md) var(--highlight),
     15px 15px var(--blur-md)  var(--shadow);
-    backdrop-filter: blur(var(--blur-md));
+}
+.raise-small {
+    box-shadow: -5px -5px var(--blur-sm) var(--highlight),
+    5px 5px var(--blur-md)  var(--shadow);
 }
 
 .press {

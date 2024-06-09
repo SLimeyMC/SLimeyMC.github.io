@@ -1,0 +1,33 @@
+---
+---
+<script>
+    import './blogViewOption.js'
+</script>
+<div class="option-list" x-data>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <ul class="inline-list" style="gap: 1em;">
+        <li>
+            <button class="circle raise-small" @click="$store.isComfy.toggle()"><box-icon name='book'/></button>
+        </li>
+        <li>
+            <button class="circle raise-small" @click="console.log($store.isComfy.on)"><box-icon name='font-size'/></button>
+        </li>
+        <li>
+            <button class="circle raise-small"><box-icon name='share' /></button>
+        </li>
+        <li>
+            <button class="circle raise-small"><box-icon name='comment-dots' /></button>
+        </li>
+    </ul>
+</div>
+<style>
+    .option-list {
+        /*position: absolute;*/
+        right: 0;
+    }
+
+    button {
+        width: 36px;
+        height: 36px;
+    }
+</style>
