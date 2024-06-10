@@ -19,11 +19,11 @@ interface Props {
 const { title, description, createdAt, updatedAt, heroImage, tags, relatedBlogs, footnote } = Astro.props;
 ---
 <BaseLayout title={title} description={description}>
-    <div class="container">
+    <div class="container" x-data :class="!$store.isComfy.on && 'detail'">
         <h1 style="line-height: 0;">{title}</h1>
         <h5>{description}</h5>
         <BlogViewOption />
-        <div class="container raise concave">
+        <div class="container raise concave detail" :style="{ '--line-height': $store.lineHeight.at+'rem' }">
             <slot/>
 
         </div>
