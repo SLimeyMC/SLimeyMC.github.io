@@ -2,15 +2,41 @@
 ---
 <script>
     import './blogViewOption.js'
+
+    var mousePositionY, mouseVelocityY;
+    function handleLineHeightChange(event) {
+        mouseVelocityY = event.pageY - mousePositionY;
+        mousePositionY = event.pageY;
+        if(mouseVelocityY > 0) {
+            $store.lineHeight.increment()
+        }
+        if(0 > mouseVelocityY) {
+            $store.lineHeight.decrement()
+        }
+    }
 </script>
-<div class="option-list" x-data>
+<div class="option-list" x-data="{isLineHeightChange: false, mousePositionY: 0.0, mouseVelocityY: 0.0}">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <ul class="inline-list" style="gap: 1em;">
         <li>
             <button class="circle raise-small" @click="$store.isComfy.toggle()"><box-icon name='book'/></button>
         </li>
         <li>
-            <button class="circle raise-small" @click="console.log($store.isComfy.on)"><box-icon name='font-size'/></button>
+            <button class="circle raise-small"
+                    @mousedown.debounce="isLineHeightChange = true"
+                    @mouseup.window="isLineHeightChange = false"
+                    @dblclick="$store.lineHeight.default()"
+                    @mousemove.throttle.outside="if(isLineHeightChange) {
+                        mouseVelocityY = event.pageY - mousePositionY;
+                        mousePositionY = event.pageY;
+                        if(mouseVelocityY > 0) {
+                            $store.lineHeight.increment()
+                        }
+                        if(0 > mouseVelocityY) {
+                            $store.lineHeight.decrement()
+                        }
+                    }"
+            ><box-icon name='font-size'/></button>
         </li>
         <li>
             <button class="circle raise-small"><box-icon name='share' /></button>
