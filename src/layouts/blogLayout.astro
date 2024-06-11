@@ -22,7 +22,7 @@ const { title, description, createdAt, updatedAt, heroImage, tags, relatedBlogs,
     <div class="container" x-data :class="!$store.isComfy.on && 'detail'">
         <h1 style="line-height: 0;">{title}</h1>
         <h5>{description}</h5>
-        <BlogViewOption />
+        <BlogViewOption title={title} description={description} />
         <div class="container raise concave detail" :style="{ '--line-height': $store.lineHeight.at+'rem' }">
             <slot/>
 
