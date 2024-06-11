@@ -1,4 +1,14 @@
 ---
+import Alpine from "alpinejs";
+const { url= Astro.request.url, title, description } = Astro.props;
+
+let emailURL = `mailto:?subject=${title}&body=${description}%0A${url}`;
+let facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+let linkedInURL = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+let redditURL = `https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${title}`;
+let twitterURL = `https://twitter.com/intent/tweet?url=${url}&text=${description}&via=SlimeyAr`
+let telegramURL = `https://t.me/share/url?url=${url}&text=${description}`
+let whatsappURL = `whatsapp://send?text=${description}${url}`;
 ---
 <script>
     import './blogViewOption.js'
@@ -15,7 +25,10 @@
         }
     }
 </script>
-<div class="option-list" x-data="{isLineHeightChange: false, mousePositionY: 0.0, mouseVelocityY: 0.0}">
+<div class="option-list" x-data="{
+isLineHeightChange: false, mousePositionY: 0.0, mouseVelocityY: 0.0,
+isShare: false
+}">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <ul class="inline-list" style="gap: 1em;">
         <li>
@@ -35,11 +48,29 @@
                         if(0 > mouseVelocityY) {
                             $store.lineHeight.decrement()
                         }
-                    }"
-            ><box-icon name='font-size'/></button>
+                    }">
+                <box-icon name='font-size'/>
+            </button>
         </li>
         <li>
-            <button class="circle raise-small"><box-icon name='share' /></button>
+            <button class="circle raise-small"
+                    @click="isShare = !isShare" @click.outside="isShare = false">
+                <box-icon name='share' :animation="isShare && 'tada'" />
+            </button>
+        </li>
+        <li style="display: none;" :style="isShare ? { display: `flex` } : { display: `none` }">
+            <a class="circle raise-small" role="button" href={emailURL} ><box-icon type="logo" name='gmail'/></a>
+            <a class="circle raise-small" role="button" href={facebookURL} ><box-icon type="logo" name='facebook'/></a>
+            <a class="circle raise-small" role="button" :href='$store.mastodonInstance &&
+            `https:/${$store.mastodonInstance}share?text={{encodeURIComponent(title)}}%0A{{encodeURIComponent(url)}}`'
+               @click.prevent="if(!(typeof $store.mastodonInstance == 'string')) { console.log($store.mastodonInstance)
+            $store.mastodonInstance = window.prompt('Your mastodon instance? it will be saved once!') }" >
+                <box-icon type="logo" name='mastodon'/></a> <!-- FIXME astro and alpine need to combine -->
+            <a class="circle raise-small" role="button" href={linkedInURL} ><box-icon type="logo" name='linkedin'/></a>
+            <a class="circle raise-small" role="button" href={redditURL} ><box-icon type="logo" name='reddit'/></a>
+            <a class="circle raise-small" role="button" href={twitterURL} ><box-icon type="logo" name='twitter'/></a>
+            <a class="circle raise-small" role="button" href={telegramURL} ><box-icon type="logo" name='telegram'/></a>
+            <a class="circle raise-small" role="button" href={whatsappURL} ><box-icon type="logo" name='whatsapp'/></a>
         </li>
         <li>
             <button class="circle raise-small"><box-icon name='comment-dots' /></button>
@@ -52,7 +83,7 @@
         right: 0;
     }
 
-    button {
+    button, [role=button] {
         width: 36px;
         height: 36px;
     }

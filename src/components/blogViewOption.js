@@ -21,3 +21,4 @@ Alpine.store('lineHeight', {
         this.at = 1.5
     }
 });
+Alpine.store('mastodonInstance', Alpine.$persist(''));
