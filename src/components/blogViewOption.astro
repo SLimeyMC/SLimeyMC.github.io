@@ -61,11 +61,13 @@ isShare: false
         <li style="display: none;" :style="isShare ? { display: `flex` } : { display: `none` }">
             <a class="circle raise-small" role="button" href={emailURL} ><box-icon type="logo" name='gmail'/></a>
             <a class="circle raise-small" role="button" href={facebookURL} ><box-icon type="logo" name='facebook'/></a>
-            <a class="circle raise-small" role="button" :href='$store.mastodonInstance &&
-            `https:/${$store.mastodonInstance}share?text={{encodeURIComponent(title)}}%0A{{encodeURIComponent(url)}}`'
+            <a class="circle raise-small" role="button"
+               x-data=`{ metadata: 'text=${encodeURIComponent(title)}%0A${encodeURIComponent(url)}'}`
+               :href='$store.mastodonInstance &&
+            `https:/${$store.mastodonInstance}share?${metadata}`'
                @click.prevent="if(!(typeof $store.mastodonInstance == 'string')) { console.log($store.mastodonInstance)
             $store.mastodonInstance = window.prompt('Your mastodon instance? it will be saved once!') }" >
-                <box-icon type="logo" name='mastodon'/></a> <!-- FIXME astro and alpine need to combine -->
+                <box-icon type="logo" name='mastodon'/></a>
             <a class="circle raise-small" role="button" href={linkedInURL} ><box-icon type="logo" name='linkedin'/></a>
             <a class="circle raise-small" role="button" href={redditURL} ><box-icon type="logo" name='reddit'/></a>
             <a class="circle raise-small" role="button" href={twitterURL} ><box-icon type="logo" name='twitter'/></a>
