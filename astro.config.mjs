@@ -10,7 +10,7 @@ import expressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [wasm(), topLevelAwait(), alpinejs(), expressiveCode(), mdx()],
+  integrations: [wasm(), topLevelAwait(), alpinejs(), expressiveCode({ themes: ["rose-pine", "rose-pine-dawn"] }), mdx()],
   site: "https://slimeymc.github.com",
   vite: {
     plugins: [wasm(), topLevelAwait()],
@@ -20,5 +20,6 @@ export default defineConfig({
     build: {
       cssMinify: 'lightningcss'
     }
-  },
+  }
 });
+// find why rehypeslug doesnt work
