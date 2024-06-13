@@ -25,7 +25,25 @@ const { title, description, createdAt, updatedAt, heroImage, tags, relatedBlogs,
         <BlogViewOption title={title} description={description} />
         <div class="container raise concave detail" :style="{ '--line-height': $store.lineHeight.at+'rem' }">
             <slot/>
-
+            <span><time datetime={updatedAt?.toISOString()}>{updatedAt?.toLocaleDateString('en-GB',)}</time>
+                <box-icon name='circle' />
+                <time datetime={createdAt.toISOString()}>{createdAt.toLocaleDateString('en-GB',)}</time></span>
         </div>
+        <script src="https://giscus.app/client.js"
+                data-repo="slimeymc/slimeymc.github.io"
+                data-repo-id="R_kgDOMBqKNw"
+                data-category="Blogs Comments"
+                data-category-id="DIC_kwDOMBqKN84CgCGW"
+                data-mapping="pathname"
+                data-strict="1"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="preferred_color_scheme"
+                data-lang="en"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
     </div>
 </BaseLayout>
