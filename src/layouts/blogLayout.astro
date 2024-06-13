@@ -2,6 +2,7 @@
 import {reference} from "astro:content";
 import BaseLayout from './baseLayout.astro';
 import BlogViewOption from '../components/blogViewOption.astro';
+import BlogMinimap from '../components/blogMinimap.astro';
 
 interface Props {
     title: string;
@@ -46,4 +47,5 @@ const { title, description, createdAt, updatedAt, heroImage, tags, relatedBlogs,
                 async>
         </script>
     </div>
+    <BlogMinimap />
 </BaseLayout>
