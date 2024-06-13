@@ -1,5 +1,7 @@
 ---
 import BlogsDropdown from "./blogsDropdown.astro";
+
+const url = Astro.request.url
 ---
 <script>
     import Alpine from 'alpinejs';
@@ -8,6 +10,8 @@ import BlogsDropdown from "./blogsDropdown.astro";
 
     Alpine.plugin(reveal)
     Alpine.plugin(persist)
+
+    Alpine.store('lastPage', Alpine.$persist(''))
 
     const Navlist = {
         NONE: 0,
@@ -18,7 +22,9 @@ import BlogsDropdown from "./blogsDropdown.astro";
     }
 </script>
 <nav class="raise-1">
-    <button class="circle raise-small" x-data @click="location.replace('../') ">
+    <button class="circle raise-small" x-data=`{ _url: '${ url }'}` @click="
+    $store.lastPage = _url;
+    ($store.lastPage === '../') ? location.replace($store.lastPage)  : location.replace('../')">
         <img src="/favicon.svg" >
     </button>
     <!-- TODO detect if user scroling then close the dropdown -->
