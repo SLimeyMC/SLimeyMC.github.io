@@ -15,16 +15,26 @@ interface Props {
     } | undefined ;
     tags: string[];
     footnote?: string | undefined;
+    headings
 }
 
-const { title, description, createdAt, updatedAt, heroImage, tags, relatedBlogs, footnote } = Astro.props;
+const { title,
+    description,
+    createdAt, updatedAt,
+    heroImage,
+    tags,
+    relatedBlogs,
+    footnote,
+    headings
+} = Astro.props;
 ---
 <BaseLayout title={title} description={description}>
-    <div class="container" x-data :class="!$store.isComfy.on && 'detail'">
+    <div class="container" x-data :class="$store.isComfy.on && 'comfy'">
+        {heroImage && (<img src={heroImage.src} alt={heroImage.alt}>)}
         <h1 style="line-height: 0;">{title}</h1>
         <h5>{description}</h5>
         <BlogViewOption title={title} description={description} />
-        <div class="container raise concave detail" :style="{ '--line-height': $store.lineHeight.at+'rem' }">
+        <div class="container raise concave" :style="{ '--line-height': $store.lineHeight.at+'rem' }">
             <slot/>
             <span><time datetime={updatedAt?.toISOString()}>{updatedAt?.toLocaleDateString('en-GB',)}</time>
                 <box-icon name='circle' />
@@ -47,5 +57,5 @@ const { title, description, createdAt, updatedAt, heroImage, tags, relatedBlogs,
                 async>
         </script>
     </div>
-    <BlogMinimap />
+    <BlogMinimap headings={headings} />
 </BaseLayout>

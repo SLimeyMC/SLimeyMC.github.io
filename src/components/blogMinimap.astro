@@ -1,7 +1,16 @@
 ---
+interface Props {
+    headings
+}
 
+const { headings } = Astro.props
 ---
-
 <aside>
-
+    <nav>
+        <ol>
+        {headings.map(heading => (
+            <li class=`.heading${heading.level}`><a href=`#${heading.slug}`>{heading.text}</a></li>
+        ))}
+        </ol>
+    </nav>
 </aside>

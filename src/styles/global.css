@@ -148,13 +148,15 @@ a {
 .container {
     margin: auto;
     padding: 1rem 3rem 3rem;
-    max-width: 60em;
+    max-width: 100em;
     line-height: var(--line-height);
     border-radius: var(--radius-lg);
 }
 
-.container.detail {
-    max-width: 100em;
+.comfy {
+    max-width: 60em;
+    font-family: 'Comfy';
+    font-size: 20px;
 }
 
 .raise-1 {
