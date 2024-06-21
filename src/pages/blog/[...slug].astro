@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import BlogLayout from '../../layouts/blogLayout.astro';
-import BlogMinimap from "../../components/blogMinimap.astro";
 
 export async function getStaticPaths() {
     const blogEntries = await getCollection('blog');
@@ -11,8 +10,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content, getHeadings } = await entry.render();
-const headings = await getHeadings
+const { Content, headings } = await entry.render();
 ---
 <BlogLayout title={entry.data.title} description={entry.data.description}
             createdAt={entry.data.createdAt} updatedAt={entry.data.updatedAt}
