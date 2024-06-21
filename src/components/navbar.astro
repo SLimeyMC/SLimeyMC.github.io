@@ -21,31 +21,32 @@ const url = Astro.request.url
         ABOUT_ME: 4
     }
 </script>
-<nav class="raise-1">
-    <button class="circle raise-small" x-data=`{ _url: '${ url }'}` @click="
+<header>
+    <nav class="raise-1">
+        <button class="circle raise-small" x-data=`{ _url: '${url}'}` @click="
     $store.lastPage = _url;
     ($store.lastPage === '../') ? location.replace($store.lastPage)  : location.replace('../')">
-        <img src="/favicon.svg" >
-    </button>
-    <!-- TODO detect if user scroling then close the dropdown -->
-    <div class="nav-list raise"
-         x-data="{open: $persist(0)}"
-         @click.outside="open = 0" @mouseleave="setTimeout(() => {open = 0}, 500)"
-         style="position: fixed; right: 8px;">
-        <ul class="inline-list">
-            <li><a @mouseenter="open = 1" href="/blogs">Blogs</a></li>
-            <li><a @mouseenter="open = 2">Showcases</a></li>
-            <li><a @mouseenter="open = 3">Wiki</a></li>
-            <li><a @mouseenter="open = 4" href="/about">About me</a></li>
-        </ul>
-        <div x-cloak x-reveal x-show="open === 1" client:visible>
-            <hr>
-            <p>RSS compatible!</p>
-            <BlogsDropdown />
+            <img src="/favicon.svg">
+        </button>
+        <!-- TODO detect if user scroling then close the dropdown -->
+        <div class="nav-list raise"
+             x-data="{open: $persist(0)}"
+             @click.outside="open = 0" @mouseleave="setTimeout(() => {open = 0}, 500)"
+             style="position: fixed; right: 8px;">
+            <ul class="inline-list">
+                <li><a @mouseenter="open = 1" href="/blogs">Blogs</a></li>
+                <li><a @mouseenter="open = 2">Showcases</a></li>
+                <li><a @mouseenter="open = 3">Wiki</a></li>
+                <li><a @mouseenter="open = 4" href="/about">About me</a></li>
+            </ul>
+            <div x-cloak x-reveal x-show="open === 1" client:visible>
+                <hr>
+                <p>RSS compatible!</p>
+                <BlogsDropdown/>
+            </div>
         </div>
-    </div>
-</nav>
-
+    </nav>
+</header>
 <style>
     nav {
         height: 3em;
